@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  month: 1
+  day: 1
+  user: 
+
+two:
+  name: MyString
+  month: 1
+  day: 1
+  user: 
