@@ -1,0 +1,8 @@
+<% if user_signed_in? -%>
+  <h3 class="updater">Administre sus datos <em>/</em></h3>
+  <div id="new-log-entry-box">
+    <%= render "Clientes | feriados" %>
+  </div>
+<% else -%>
+  <%= render :partial => 'welcome_message' %>
+<% end -%>

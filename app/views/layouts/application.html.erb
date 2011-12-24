@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Holidays</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Holidays</title>
+    <%= stylesheet_link_tag    "reset", "base", "grid" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+  </head>
 
-<%= yield %>
+  <body>
+    <!-- .wrapper -->
+    <div class="wrapper">
+      <!-- .container -->
+      <div class="container">
+        <div class="header row">
+          <div class="four columns">
+            <h1 class="logo">
+	        <%= link_to "Holidays Reminder", root_path %>
+	 		<em>beta!</em>
+	        </h1>
+          </div>
 
-</body>
+          <div class="twelve columns session">
+            <% if user_signed_in? -%>
+              <%= render :partial => 'devise/shared/logged_in_user' %>
+            <% else -%>
+              <%= render :partial => 'devise/shared/unlogged_in_user' %>
+            <% end -%>
+          </div>
+        </div>
+
+        <div class="flashes">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+
+        <%= yield %>
+        <!-- .footer -->
+        <div class="footer">
+          2011. Holidays. All rights reserved.
+        </div><!-- .footer -->
+      </div><!-- .container -->
+    </div><!-- .wrapper -->
+  </body>
 </html>
+
