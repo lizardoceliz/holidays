@@ -44,5 +44,23 @@ module Holidays
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    #Configuracion envio e-mail.
+    config.mailer_sender = "no-reply@info.com"
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.delivery_method = :smtp
+
+    ActionMailer::Base.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :enable_starttls_auto => true,
+      :domain => "www.holidaysreminder.com",  
+      :port => 587,
+      :authentication => :plain,
+      :user_name => "lizardoceliz@gmail.com",
+      :password => 'alejandro75'
+    }
+
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   end
 end
