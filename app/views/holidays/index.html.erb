@@ -1,0 +1,27 @@
+<h1>Feriados</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Mes</th>
+	<th>Día</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @holidays.each do |holiday| %>
+  <tr>
+    <td><%= holiday.name %></td>
+    <td><%= holiday.month %></td>
+    <td><%= holiday.day %></td>
+    <td><%= link_to 'Show', holiday %></td>
+    <td><%= link_to 'Edit', edit_holiday_path(holiday) %></td>
+    <td><%= link_to 'Destroy', holiday, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Feriado', new_holiday_path %>

@@ -1,7 +1,10 @@
 <% if user_signed_in? -%>
   <h3 class="updater">Administre sus datos</h3>
-  <div id="new-log-entry-box">
-    Estas logueado en la pagina principal
+  <div id="admin-customer-link">
+    <%= link_to 'Administrar Clientes', customers_path %>
+  </div>
+  <div id="admin-feriados-link">
+    <%= link_to 'Administrar Feriados', holidays_path %>
   </div>
 <% else -%>
   <%= render :partial => 'welcome_message' %>
