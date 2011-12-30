@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  customer_id: 1
+  holiday: 2011-12-30 18:40:47
+  sent: false
+
+two:
+  user_id: 1
+  customer_id: 1
+  holiday: 2011-12-30 18:40:47
+  sent: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111223144441) do
+ActiveRecord::Schema.define(:version => 20111230214047) do
 
   create_table "customers", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(:version => 20111223144441) do
   end
 
   add_index "holidays", ["user_id"], :name => "index_holidays_on_user_id"
+
+  create_table "reminders", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.datetime "holiday"
+    t.boolean  "sent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
