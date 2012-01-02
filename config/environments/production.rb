@@ -69,4 +69,6 @@ Holidays::Application.configure do
     :password             => 'alejandro75',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+    
+    config.assets.precompile += %w( reset.css  )    
 end
