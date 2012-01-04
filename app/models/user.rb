@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   
   has_many :customers
   has_many :holidays
+  
+  validates :name, :presence => true
 end
