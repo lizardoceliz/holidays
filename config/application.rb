@@ -65,5 +65,6 @@ module Holidays
     config.action_mailer.default_url_options = { :host => 'holidays-lizardo.heroku.com' }
     
     config.assets.initialize_on_precompile   = false
+    config.assets.precompile += %w( *.css *.js )
   end
 end
