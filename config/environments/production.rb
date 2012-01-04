@@ -68,5 +68,7 @@ Holidays::Application.configure do
     :user_name            => 'lizardoceliz@gmail.com',
     :password             => 'alejandro75',
     :authentication       => 'plain',
-    :enable_starttls_auto => true  }    
+    :enable_starttls_auto => true  }
+    
+    config.assets.precompile += %w( *.css *.js )    
 end
