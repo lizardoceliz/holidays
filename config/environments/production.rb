@@ -70,5 +70,6 @@ Holidays::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
     
+    config.assets.initialize_on_precompile   = false
     config.assets.precompile += %w( *.css *.js )    
 end
