@@ -7,6 +7,8 @@ Holidays::Application.routes.draw do
   resources :customers
   resources :holidays
   
+  match ':controller(/:action.:format)'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -51,17 +51,17 @@ module Holidays
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
 
-    ActionMailer::Base.smtp_settings = {
-      :address => "smtp.gmail.com",
-      :enable_starttls_auto => true,
-      :domain => "www.holidaysreminder.com",  
-      :port => 587,
-      :authentication => :plain,
-      :user_name => "lizardoceliz@gmail.com",
-      :password => 'alejandro75'
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => 'www.holidayrimender.com',
+      :user_name            => 'lizardoceliz@gmail.com',
+      :password             => 'Alejandro75',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  
     }
 
-    #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
     #config.action_mailer.default_url_options = { :host => 'holidays-lizardo.heroku.com' }
     #config.assets.initialize_on_precompile   = false
   end

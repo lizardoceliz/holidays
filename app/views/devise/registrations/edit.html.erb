@@ -1,3 +1,5 @@
+<% javascript '../javascripts/dynamic_states' %>
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -17,6 +19,14 @@
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
+
+  <div><%= f.label "country" %><br />
+  <% u = User.find(current_user.id) %>
+  <% s = State.find(u.state_id) %>
+  <%= collection_select(:country, :country_id, Country.all, :id, :name, options ={:selected => s.country_id}, :class => "country_id") %></div>
+
+ <div><%= f.label :state %><br />
+  <%= collection_select(:user, :state_id, State.all, :id, :name, options ={:selected => u.state_id}, :class => "state_id") %></div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>

@@ -1,0 +1,57 @@
+var states = new Array();
+<% State.all.each do |state| -%>
+  states.push(new Array(<%= state.country_id %>, '<%=h state.name %>', <%= state.id %>));
+<% end -%>
+
+function countrySelected() {
+  country_id = $('#country_country_id').val();
+  state      = $('#user_state_id');
+
+  if (state.find('option:selected').attr("country") == undefined ){
+	  //console.log("entro por undefined");
+		state.find('option').each(function(){
+			for(var i in states){
+			    if (states[i][2] == $(this).val() ) {
+				  	$(this).attr("country", states[i][0]);
+				  }
+			}	 
+		});
+		removerOpciones();
+	}else {
+		removerOpciones();
+    state.append(new Option("-Select a state", ""));
+
+		//console.log("options.length: " + options.length)
+		for(var i in states){
+		    if (states[i][0] == country_id ) {
+				  //console.log("Encontro el pais: " + country_id);
+				  new_option = new Option(states[i][1], states[i][2]);
+				  new_option.setAttribute("country", states[i][0])
+					state.append(new_option)
+		    }
+		}
+	}		
+	if (country_id == "")
+    state.parent().hide();
+  else
+		state.parent().show();
+
+
+	function removerOpciones(){
+		state.find('option').each(function(){
+			if($(this).attr("country") != country_id && country_id != "") {
+				//console.log("c1: " + country_id + " remueve option : " + $(this).val());
+				$(this).remove();
+			}
+		});
+	}
+}
+
+
+$(document).ready(function(){	
+  countrySelected();
+  $('#country_country_id').live('change', function(){ 
+		//alert("cambio combo country");
+		countrySelected();
+	});
+});

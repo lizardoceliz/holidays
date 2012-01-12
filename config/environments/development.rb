@@ -36,7 +36,7 @@ Holidays::Application.configure do
     :port                 => 587,
     :domain               => 'www.holidayrimender.com',
     :user_name            => 'lizardoceliz@gmail.com',
-    :password             => 'alejandro75',
+    :password             => 'Alejandro75',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 end
