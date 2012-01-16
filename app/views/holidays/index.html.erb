@@ -1,27 +1,48 @@
-<h1>Holidays</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", holidays_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_holiday_path %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Holidays</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first">ID</th>
+                    <th>
+            <%= t("activerecord.attributes.holiday.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @holidays.each do |holiday| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= holiday.id %>
+          </td>
+                    <td>
+            <%= link_to holiday.name, holiday_path(holiday) %>
+          </td>
+                    <td>
+            <%= holiday.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", holiday_path(holiday) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_holiday_path(holiday) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", holiday_path(holiday), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Month</th>
-	<th>Day</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @holidays.each do |holiday| %>
-  <tr>
-    <td><%= holiday.name %></td>
-    <td><%= holiday.month %></td>
-    <td><%= holiday.day %></td>
-    <td><%= link_to 'Show', holiday %></td>
-    <td><%= link_to 'Edit', edit_holiday_path(holiday) %></td>
-    <td><%= link_to 'Destroy', holiday, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Holiday', new_holiday_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

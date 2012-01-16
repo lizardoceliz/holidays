@@ -1,4 +1,6 @@
 class HolidaysController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
     @holidays = Holiday.where(:user_id => current_user.id)
     

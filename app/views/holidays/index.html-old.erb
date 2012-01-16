@@ -1,0 +1,27 @@
+<h1>Holidays</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Month</th>
+	<th>Day</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @holidays.each do |holiday| %>
+  <tr>
+    <td><%= holiday.name %></td>
+    <td><%= holiday.month %></td>
+    <td><%= holiday.day %></td>
+    <td><%= link_to 'Show', holiday %></td>
+    <td><%= link_to 'Edit', edit_holiday_path(holiday) %></td>
+    <td><%= link_to 'Destroy', holiday, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Holiday', new_holiday_path %>

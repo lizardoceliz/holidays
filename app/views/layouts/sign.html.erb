@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web App</title>
+  <%= stylesheet_link_tag "web_app_theme" %>
+  <%= javascript_include_tag 'application' %>
+  <%= yield(:head) %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id="container">
+    <div id="box">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

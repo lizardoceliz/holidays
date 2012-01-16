@@ -1,10 +1,3 @@
-<div class="logged-in-user">
-  Bienvenido
-  <span class="username">
-    <%= current_user.name %>!
-  </span>
-  <span class="divider"> | </span>
-  <%= link_to 'Actualice su perfil', edit_user_registration_path %>
-  <span class="divider"> | </span>
-  <%= link_to 'Salir', destroy_user_session_path %>
-</div>
+<li><a href="#"> <%= current_user.name %> </a></li>
+<li><a href="<%= edit_user_registration_path %>"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
+<li><a href="<%= destroy_user_session_path %>" class="logout"><%= t("web-app-theme.logout", :default => "Logout") %></a></li>

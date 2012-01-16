@@ -1,5 +1,2 @@
-<div class="un-logged-in-user">
-  <%= link_to 'Ingresar', new_user_session_path %>
-  <span class="divider"> |	 </span>
-  <%= link_to 'Registrate gratis', new_user_registration_path %>
-</div>
+<li><a href="<%= new_user_session_path %>"><%= t("web-app-theme.login", :default => "Login") %></a></li>
+<li><a href="<%= new_user_registration_path %>"><%= t("web-app-theme.new_user", :default => "Registrate new user") %></a></li>

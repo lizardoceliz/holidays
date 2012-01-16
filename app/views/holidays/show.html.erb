@@ -1,19 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", holidays_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_holiday_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", holiday_path %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.holiday.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @holiday.name %>
+        </p>
 
-<p>
-  <b>Name:</b>
-  <%= @holiday.name %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.holiday.month", :default => t("activerecord.labels.month", :default => "Month")) %>:</b>
+          <%= @holiday.month %>
+        </p>
 
-<p>
-  <b>Month:</b>
-  <%= @holiday.month %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.holiday.day", :default => t("activerecord.labels.day", :default => "Day")) %>:</b>
+          <%= @holiday.day %>
+        </p>
 
-<p>
-  <b>Day:</b>
-  <%= @holiday.day %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.holiday.user_id", :default => t("activerecord.labels.user_id", :default => "User")) %>:</b>
+          <%= @holiday.user_id %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_holiday_path(@holiday), :class => "button" %>
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), holiday_path(@holiday), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_holiday_path(@holiday) %> |
-<%= link_to 'Back', holidays_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

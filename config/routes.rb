@@ -7,7 +7,7 @@ Holidays::Application.routes.draw do
   resources :customers
   resources :holidays
   
-  match ':controller(/:action.:format)'
+  match ':controller(/:action.:format)' # Para javascripts de combos anidados
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
