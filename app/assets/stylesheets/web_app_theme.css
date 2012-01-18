@@ -7,3 +7,26 @@
  */
 
 /* Write here your css for overriding the theme's rules */
+
+/* flash user error */
+#error_explanation {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  text-align:left;
+  margin:0px;
+  width:80%;
+}
+
+#error_explanation h2 {
+	font: normal 12px/1.5em "Lucida Grande", "Helvetica Neue", Arial, sans-serif;
+  border: 1px solid #fbb;
+  background-color: #fdd;
+	padding:5px;
+}
+
+#error_explanation ul li {
+	border-bottom-color: #F0F0EE;
+	border-color: #F0F0EE;
+  margin: 3px 10px 0 0;
+  padding: 5px 5px;
+}

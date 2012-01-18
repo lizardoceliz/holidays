@@ -24,10 +24,6 @@
           <%= @customer.remember_me %>
         </p>
 
-        <p>
-          <b><%= t("activerecord.attributes.customer.user_id", :default => t("activerecord.labels.user_id", :default => "User")) %>:</b>
-          <%= @customer.user_id %>
-        </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_customer_path(@customer), :class => "button" %>
         <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), customer_path(@customer), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>

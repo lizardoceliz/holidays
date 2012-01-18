@@ -1,7 +1,7 @@
 desc "This task will be called by the Heroku scheduler add-on"
 hoy   = Time.now
-anio  = hoy.year - 1  
-hoy   = Time.strptime("{ #{anio}, 12, 28}", "{ %Y, %m, %d }")
+anio  = hoy.year  
+#hoy   = Time.strptime("{ #{anio}, 12, 28}", "{ %Y, %m, %d }")
 mes   = hoy.month
 delta = 14 # dias con anterioridad para notificar
 
@@ -48,9 +48,9 @@ task :processing_holidays => :environment do
     agregarNotificacion(user, delta, hoy, 1, anio)
   # Enviar emails
   Reminder.order("holiday ASC").where("holiday >= ?", hoy).each do |reminder|
-    #Notifier.notifier_customer(reminder.user_id, reminder.customer_id, reminder.holiday).deliver
-    #reminder.sent = true
-    #reminder.save
+    Notifier.notifier_customer(reminder.user_id, reminder.customer_id, reminder.holiday).deliver
+    reminder.sent = true
+    reminder.save
     puts "Envio email para usuario: #{reminder.user_id}, customer: #{reminder.customer_id}, holiday: #{reminder.holiday}"
   end
   
