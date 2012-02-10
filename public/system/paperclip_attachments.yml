@@ -1,0 +1,6 @@
+has_attached_file :logo,
+    :storage => Rails.env.production? ? :s3 : :filesystem,
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+    :path => Rails.env.production? ? ":attachment/:id/:style.:extension" : "#{RAILS_ROOT}/public/uploads/:attachment/:id/:style.:extension",
+    :url => Rails.env.production? ? ":attachment/:id/:style.:extension" : "/uploads/:attachment/:id/:style.:extension",
+    :bucket => 'holidays_rafa_logos'
