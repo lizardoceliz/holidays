@@ -42,3 +42,5 @@ group :production do
 end
 
 gem 'web-app-theme', '~> 0.8.0'
+
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"

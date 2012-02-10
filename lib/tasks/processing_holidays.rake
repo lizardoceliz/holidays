@@ -1,7 +1,7 @@
 desc "This task will be called by the Heroku scheduler add-on"
 hoy   = Time.now
 anio  = hoy.year  
-#hoy   = Time.strptime("{ #{anio}, 12, 28}", "{ %Y, %m, %d }")
+hoy   = Time.strptime("{ #{anio}, 12, 28}", "{ %Y, %m, %d }")
 mes   = hoy.month
 delta = 14 # dias con anterioridad para notificar
 
@@ -12,7 +12,7 @@ task :processing_holidays => :environment do
         feriado    = Time.strptime("{#{anio}, #{holiday.month}, #{holiday.day} }", "{ %Y, %m, %d }")
         diferencia = (((feriado - hoy).to_i / 60).to_i / 60).to_i / 24 
 
-        puts "La fecha del feriado #{holiday.name} es: #{feriado} para el usuario: #{user.name}"
+        puts "La fecha del feriado #{holidaysy.name} es: #{feriado} para el usuario: #{user.name}"
         puts "diferencia en dias: #{diferencia}"
 
         if diferencia >= 0 && diferencia <= delta 
@@ -23,7 +23,7 @@ task :processing_holidays => :environment do
                 @reminder.user_id     = user.id
                 @reminder.customer_id = customer.id
                 @reminder.holiday     = feriado
-                @reminder.save
+                @reminder.save  
                 puts "Se agrego el feriado para envio de mail"
               else
                 puts "Ya existia el registro de envio en Reminder"  
@@ -45,9 +45,9 @@ task :processing_holidays => :environment do
     else
         mes += 1
     end  
-    agregarNotificacion(user, delta, hoy, 1, anio)
+    agregarNotificacion(user, delta, hoy, mes, anio)
   # Enviar emails
-  Reminder.order("holiday ASC").where("holiday >= ?", hoy).each do |reminder|
+  Reminder.order("holiday ASC").where("holiday >= ?", hoy).where(:sent => nil).each do |reminder|
     Notifier.notifier_customer(reminder.user_id, reminder.customer_id, reminder.holiday).deliver
     reminder.sent = true
     reminder.save
