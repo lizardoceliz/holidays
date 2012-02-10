@@ -1,5 +1,4 @@
 production:
-  bucket_name: holidays-rafael-staging
   access_key_id: 1DBF1J33AMKHB4VPQK02
   secret_access_key: WUcho5vKQqo4L1vFEu4+nVcumCl9ZOhlF7wyxvSn
   

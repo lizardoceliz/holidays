@@ -39,10 +39,9 @@ end
 group :production do
   gem 'therubyracer', '~> 0.9.3.beta1'
   gem 'pg'
+  gem 'aws-s3'
 end
 
 gem 'web-app-theme', '~> 0.8.0'
 
 gem "paperclip", "~> 2.6.0"
-
-gem 'aws-s3'
